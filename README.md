@@ -1,1 +1,1 @@
-# EduSync
+# FoodLoop
