@@ -1,0 +1,24 @@
+spring:
+  application:
+    name: Edusync
+  datasource:
+    url: jdbc:mysql://localhost:3306/edusync
+    username: root
+    password: Devansh2005@#
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        format_sql: true
+server:
+  port: 8081
+
+application:
+  security:
+    jwt:
+      secret-key: b15f7819606774c89cbc1477c9dcbf149683af67ed2ca3e875718850c39330ce
+      expiration: 86400000  # a day
+      refresh-token:
+        expiration: 604800000  # 7 days
