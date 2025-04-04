@@ -1,6 +1,6 @@
 import { lazy } from "react";
 import { BrowserRouter, Route, Routes } from "react-router";
-import { ThemeProvider } from "@/context/theme-provier";
+import { ThemeProvider } from "@/context/theme/theme-provier";
 
 const HomePage = lazy(() => import("@/pages/HomePage"));
 
@@ -11,7 +11,6 @@ function App() {
         <BrowserRouter>
           <Routes>
             <Route path="/" element={<HomePage />} />
-            <Route path="/login" element={<LoginPage />} />
           </Routes>
         </BrowserRouter>
       </ThemeProvider>
