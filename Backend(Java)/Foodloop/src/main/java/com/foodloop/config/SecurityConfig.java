@@ -22,8 +22,8 @@ public class SecurityConfig {
     private final LogoutHandler logoutHandler;
 
     public SecurityConfig(JwtAuthenticationFilter jwtAuthFilter,
-                          AuthenticationProvider authenticationProvider,
-                          LogoutHandler logoutHandler) {
+            AuthenticationProvider authenticationProvider,
+            LogoutHandler logoutHandler) {
         this.jwtAuthFilter = jwtAuthFilter;
         this.authenticationProvider = authenticationProvider;
         this.logoutHandler = logoutHandler;
@@ -41,44 +41,22 @@ public class SecurityConfig {
 
                                 .requestMatchers("/test/admin/**").hasRole(Role.ADMIN.name())
                                 .requestMatchers("/test/charity/**").hasAnyRole(Role.CHARITY.name(), Role.ADMIN.name())
-                                .requestMatchers("/test/restaurant/**").hasAnyRole(Role.RESTAURANT.name(), Role.ADMIN.name())
+                                .requestMatchers("/test/restaurant/**")
+                                .hasAnyRole(Role.RESTAURANT.name(), Role.ADMIN.name())
 
                                 .anyRequest()
                                 .authenticated()
 
                 )
-                .sessionManagement(session ->
-                        session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
+                .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .authenticationProvider(authenticationProvider)
                 .addFilterBefore(jwtAuthFilter, UsernamePasswordAuthenticationFilter.class)
-                .logout(httpSecurityLogoutConfigurer ->
-                        httpSecurityLogoutConfigurer.logoutUrl("/auth/logout")
-                                .addLogoutHandler(logoutHandler)
-                                .logoutSuccessHandler((request, response, authentication) ->
-                                        SecurityContextHolder.clearContext()
-                                ));
-
+                .logout(httpSecurityLogoutConfigurer -> httpSecurityLogoutConfigurer.logoutUrl("/auth/logout")
+                        .addLogoutHandler(logoutHandler)
+                        .logoutSuccessHandler(
+                                (request, response, authentication) -> SecurityContextHolder.clearContext()));
 
         return http.build();
     }
 
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
