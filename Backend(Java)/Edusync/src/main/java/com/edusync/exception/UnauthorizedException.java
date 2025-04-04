@@ -1,4 +1,4 @@
-package com.edusync.service;
+package com.edusync.exception;
 
 public class UnauthorizedException extends Throwable {
     public UnauthorizedException(String s) {

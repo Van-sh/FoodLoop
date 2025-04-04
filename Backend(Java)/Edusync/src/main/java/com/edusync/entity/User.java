@@ -49,18 +49,6 @@ public class User implements UserDetails {
 
     // above is used for authentication
 
-    // if user is teacher
-    @OneToMany(mappedBy = "teacher", cascade = CascadeType.ALL, orphanRemoval = true)
-    List<Course> courses;
-
-    // courses user enrolled in
-    @OneToMany(mappedBy = "student", cascade = CascadeType.ALL, orphanRemoval = true)
-    List<Enrollment> enrollments;
-
-    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<Comment> comments;
-
-
 }
 
 
