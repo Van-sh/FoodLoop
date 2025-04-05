@@ -1,7 +1,7 @@
 import { lazy } from "react";
 import { BrowserRouter, Navigate, Route, Routes } from "react-router";
 
-import { ThemeProvider } from "@/context/theme/theme-provier";
+import { ThemeProvider } from "@/context/theme/theme-provider";
 
 const HomePage = lazy(() => import("@/pages/HomePage"));
 const LoginPage = lazy(() => import("@/pages/LoginPage"));
