@@ -2,22 +2,22 @@ package com.foodloop.securityController;
 
 
 public class AuthenticationResponse {
-    private String acessToken;
+    private String accessToken;
     private String refreshToken;
 
-    public AuthenticationResponse(String acessToken, String refreshToken) {
-        this.acessToken = acessToken;
+    public AuthenticationResponse(String accessToken, String refreshToken) {
+        this.accessToken = accessToken;
         this.refreshToken = refreshToken;
     }
 
     public AuthenticationResponse() {}
 
-    public String getAcessToken() {
-        return acessToken;
+    public String getAccessToken() {
+        return accessToken;
     }
 
-    public void setAcessToken(String acessToken) {
-        this.acessToken = acessToken;
+    public void setAccessToken(String accessToken) {
+        this.accessToken = accessToken;
     }
 
     public String getRefreshToken() {

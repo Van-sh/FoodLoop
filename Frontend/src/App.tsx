@@ -1,18 +1,30 @@
-import { useState } from "react";
+import { lazy } from "react";
+import { BrowserRouter, Navigate, Route, Routes } from "react-router";
+
+import { ThemeProvider } from "@/context/theme/theme-provider";
+
+const HomePage = lazy(() => import("@/pages/HomePage"));
+const LoginPage = lazy(() => import("@/pages/LoginPage"));
+const SignupPage = lazy(() => import("@/pages/SignupPage"));
 
 function App() {
-  const [count, setCount] = useState(0);
-
   return (
     <>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>count is {count}</button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">Click on the Vite and React logos to learn more</p>
+      <ThemeProvider>
+        <BrowserRouter>
+          <Routes>
+            <Route path="/" element={<HomePage />} />
+            <Route path="/signup/">
+              <Route index element={<Navigate to={"/"} />} />
+              <Route path=":role" element={<SignupPage />} />
+            </Route>
+            <Route path="/login" element={<LoginPage />} />
+
+            {/* Fallback */}
+            <Route path="*" element={<Navigate to={"/"} />} />
+          </Routes>
+        </BrowserRouter>
+      </ThemeProvider>
     </>
   );
 }
